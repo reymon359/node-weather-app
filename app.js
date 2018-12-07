@@ -1,4 +1,4 @@
-const axios = require('axios');
+const place = require('./place/place');
 
 //I will add the params without command
 const argv = require('yargs').options({
@@ -9,17 +9,8 @@ const argv = require('yargs').options({
     }
 }).argv;
 
-//to adapt the parameters to the google api url
-let encodedUrl = encodeURI(argv.address);
-
-axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedUrl}&key=AIzaSyC8hBRAlbrGCvH26yiXvCRiRMZko5zSRS0`)
+place.getPlaceLatLng(argv.address)
     .then(resp => {
-        // console.log(JSON.stringify(resp.data, undefined, 2));
-        let location = resp.data.results[0];
-        let coors = location.geometry.location;
-
-        console.log('Adress: ', location.formatted_address);
-        console.log('lat', coors.lat);
-        console.log('lng', coors.lng);
+        console.log(resp);
     })
-    .catch(e => console.log('ERROR!!!', e))
+    .catch(e => console.log(e));
