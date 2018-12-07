@@ -1,0 +1,14 @@
+{
+    "name": "node-to-do-app",
+    "version": "1.0.0",
+    "description": "App for managing tasks to do",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Ramon Morcillo",
+    "license": "ISC",
+    "dependencies": {
+        "yargs": "^12.0.5"
+    }
+}
