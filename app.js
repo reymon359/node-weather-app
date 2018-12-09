@@ -10,12 +10,18 @@ const argv = require('yargs').options({
     }
 }).argv;
 
-// place.getPlaceLatLng(argv.address)
-//     .then(resp => {
-//         console.log(resp);
-//     })
-//     .catch(e => console.log(e));
+let getInfo = async(address) => {
+    try {
+        let coors = await place.getPlaceLatLng(address);
+        let temp = await weather.getWeather(coors.lat, coors.lng);
 
-weather.getWeather(41.390205, 2.154007)
-    .then(temp => console.log(temp))
-    .catch(e => console.log(e))
+        return `The weather in ${coors.address} is ${temp} ºC`;
+
+    } catch (error) {
+        return `Could not obtain the weather in ${adress}`;
+    }
+}
+
+getInfo(argv.address)
+    .then(message => console.log(message))
+    .catch(e => console.log(e));

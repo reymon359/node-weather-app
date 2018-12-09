@@ -14,9 +14,6 @@ const getPlaceLatLng = async(address) => {
     let location = resp.data.results[0];
     let coors = location.geometry.location;
 
-    console.log('Adress: ', location.formatted_address);
-    console.log('lat', coors.lat);
-    console.log('lng', coors.lng);
 
     return {
         address: location.formatted_address,
