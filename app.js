@@ -5,7 +5,7 @@ const weather = require('./weather/weather');
 const argv = require('yargs').options({
     address: {
         alias: 'a',
-        desc: 'Adress of the city we want to know the weather',
+        desc: 'Address of the city we want to know the weather',
         demand: true
     }
 }).argv;
@@ -18,7 +18,7 @@ let getInfo = async(address) => {
         return `The weather in ${coors.address} is ${temp} ºC`;
 
     } catch (error) {
-        return `Could not obtain the weather in ${adress}`;
+        return `Could not obtain the weather in ${address}`;
     }
 }
 
